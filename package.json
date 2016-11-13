@@ -1,0 +1,23 @@
+{
+  "name": "webdev-teste-elevador",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --progress --colors",
+    "watch": "webpack --progress --colors --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VitorLuizC/webdev-teste-elevador.git"
+  },
+  "author": "Vitor Luiz Cavalcanti <vitorluizc@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VitorLuizC/webdev-teste-elevador/issues"
+  },
+  "homepage": "https://github.com/VitorLuizC/webdev-teste-elevador#readme",
+  "devDependencies": {
+    "webpack": "^1.13.3"
+  }
+}
