@@ -7,3 +7,43 @@ body {
   font-size: 1.8em;
   font-family: sans-serif;
 }
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  width: 80%;
+  height: 100%;
+}
+
+.container > .andar {
+  height: calc((100% / 6) - 30px);
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: right;
+  background-color: rgba(255, 255, 0, .25);
+  background-clip: content-box;
+}
+
+.container > .elevador {
+  position: absolute;
+  overflow: hidden;
+  bottom: 15px;
+  width: 100px;
+  height: calc((100% / 6) - 30px);
+}
+
+.container > .elevador > .porta {
+  float: left;
+  height: 100%;
+  width: 50%;
+  background-color: yellow;
+}
+
+.container > .elevador.aberto > .porta:first-child {
+  transform: translateX(-50%);
+}
+
+.container > .elevador.aberto > .porta:last-child {
+  transform: translateX(50%);
+}

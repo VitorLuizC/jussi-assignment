@@ -3,8 +3,8 @@
 /**
  * Obtém elementos do container pelo seletores CSS.
  * @param {string} seletores - Seletores CSS.
- * @param {Document|Element} [container = document] - DOM ou elemento de onde os seletores serão obtidos.
- * @returns {Array<Element>}
+ * @param {Document|HTMLElement} [container = document] - DOM ou elemento de onde os seletores serão obtidos.
+ * @returns {Array<HTMLElement>}
  */
 function obterElementos(seletores, container = document) {
     var elementos = [];
