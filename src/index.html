@@ -1,46 +1,53 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>webdev-teste-elevador</title>
-
-<link rel="stylesheet" href="style.css">
-
-<body>
-    <div class="container">
-        <div class="andar">
-            <h2>Térreo</h2>
-            <button class="subir" type="button">/\</button>
-        </div>
-        <div class="andar">
-            <h2>1º Andar</h2>
-            <button class="subir" type="button">/\</button>
-            <button class="descer" type="button">\/</button>
-        </div>
-        <div class="andar">
-            <h2>2º Andar</h2>
-            <button class="subir" type="button">/\</button>
-            <button class="descer" type="button">\/</button>
-        </div>
-        <div class="andar">
-            <h2>3º Andar</h2>
-            <button class="subir" type="button">/\</button>
-            <button class="descer" type="button">\/</button>
-        </div>
-        <div class="andar">
-            <h2>4º Andar</h2>
-            <button class="subir" type="button">/\</button>
-            <button class="descer" type="button">\/</button>
-        </div>
-        <div class="andar">
-            <h2>5º Andar</h2>
-            <button class="descer" type="button">\/</button>
-        </div>
-        <div class="elevador">
-            <div class="porta"></div>
-            <div class="porta"></div>
-        </div>
-    </div>
-
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Teste do Elevador</title>
+    <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
-</body>
+  </head>
+  <body>
+    <section class="floors-container">
+      <div class="elevator-container" data-id="elevator">
+        <div class="door"></div>
+        <div class="door"></div>
+      </div>
+      <div class="floor-block" data-number="0">
+        <div class="floor"></div>
+        <p class="label">Térreo</p>
+        <button class="button" type="button" data-action="go-up">Subir</button>
+      </div>
+      <div class="floor-block" data-number="1">
+        <div class="floor"></div>
+        <p class="label">1º Andar</p>
+        <button class="button" type="button" data-action="go-up">Subir</button>
+        <button class="button" type="button" data-action="go-down">Descer</button>
+      </div>
+      <div class="floor-block" data-number="2">
+        <div class="floor"></div>
+        <p class="label">2º Andar</p>
+        <button class="button" type="button" data-action="go-up">Subir</button>
+        <button class="button" type="button" data-action="go-down">Descer</button>
+      </div>
+      <div class="floor-block" data-number="3">
+        <div class="floor"></div>
+        <p class="label">3º Andar</p>
+        <button class="button" type="button" data-action="go-up">Subir</button>
+        <button class="button" type="button" data-action="go-down">Descer</button>
+      </div>
+      <div class="floor-block" data-number="4">
+        <div class="floor"></div>
+        <p class="label">4º Andar</p>
+        <button class="button" type="button" data-action="go-up">Subir</button>
+        <button class="button" type="button" data-action="go-down">Descer</button>
+      </div>
+      <div class="floor-block" data-number="5">
+        <div class="floor"></div>
+        <p class="label">5º Andar</p>
+        <button class="button" type="button" data-action="go-down">Descer</button>
+      </div>
+    </section>
+  </body>
+</html>
