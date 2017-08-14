@@ -14,6 +14,7 @@
 
 /**
  * Representação dos estados do elevator.
+ * @type {{moving: Boolean, open: Boolean, next: Stop[], direction: Direction, floor: Number, timeout: Number }}
  */
 const state = {
   moving: false,
@@ -26,7 +27,7 @@ const state = {
 
 /**
  * Obtém as próximas paradas do elevador ordenadas.
- * @returns {Array.<Stop>}
+ * @returns {Stop[]}
  */
 export const getNext = () => state.next
   .sort((a, b) => {
