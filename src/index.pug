@@ -1,0 +1,45 @@
+mixin floor-block(floor)
+  .floor-block(data-number=floor.number)
+    .floor
+    p.label !{floor.name}
+    if (!floor.isFirst)
+      button.button(type='button', data-action='up') Subir
+    if (!floor.isLast)
+      button.button(type='button', data-action='down') Descer
+
+doctype html
+html(lang='pt-br')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    title Teste do Elevador
+    link(rel='stylesheet', href='style.css')
+    script(src='script.js')
+
+  body
+    section.floors-container
+      .elevator-container(data-id='elevator')
+        .door
+        .door
+
+      -
+        const floors = [
+          'Térreo',
+          '1º Andar',
+          '2º Andar',
+          '3º Andar',
+          '4º Andar',
+          '5º Andar'
+        ]
+
+      - for (let index = 0; index < floors.length; index++)
+        -
+          const floor = {
+            name: floors[index],
+            number: index,
+            isFirst: index === 0,
+            isLast: index === (floors.length - 1)
+          }
+
+        +floor-block(floor)

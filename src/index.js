@@ -11,8 +11,8 @@ const setup = () => {
 
   floors.forEach(floor => {
     const number = floor.getAttribute('data-number');
-    const up = floor.querySelector('[data-action="go-up"]');
-    const down = floor.querySelector('[data-action="go-down"]');
+    const up = floor.querySelector('[data-action="up"]');
+    const down = floor.querySelector('[data-action="down"]');
 
     if (up) up.addEventListener('click', () => {
       addNext({
@@ -46,9 +46,14 @@ const updateUI = () => {
 
   elevator.classList.toggle('-open', state.open);
 
-  if (!state.open && state.next.length > 0) {
+  const goNext = !state.open && state.next.length > 0 && state.timeout === null
+
+  if (goNext) {
     const [ next ] = getNext();
     const diference = Math.abs(state.floor - next.floor);
+
+    elevator.style.transform = `translateY(-${(next.floor * 120) + 120}px)`;
+    elevator.style.transitionDuration = `${diference}s`;
 
     state.open = false;
     state.moving = true;
@@ -58,15 +63,13 @@ const updateUI = () => {
       state.open = true;
       state.moving = false;
       removeNext(next);
-      updateUI();
       state.timeout = setTimeout(() => {
         state.open = false
         state.timeout = null;
         updateUI();
       }, 3000);
+      updateUI();
     }, diference * 1000);
-    elevator.style.transform = `translateY(-${(next.floor * 120) + 120}px)`;
-    elevator.style.transitionDuration = `${diference}s`;
     console.log(diference);
   }
 
