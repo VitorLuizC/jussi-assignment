@@ -38,22 +38,40 @@ const setup = () => {
 
 /**
  * Atualiza a UI usando o estado do elevador.
- * @returns {Void}
+ * @returns {Undefined}
  */
 const updateUI = () => {
   const elevator = document.querySelector('[data-id="elevator"]');
   const floors = [...document.querySelectorAll('.floor-block')];
+  const [ next ] = getNext();
+
+  console.log(JSON.stringify(getNext(), null, 1));
 
   elevator.classList.toggle('-open', state.open);
 
   const goNext = !state.open && state.next.length > 0 && state.timeout === null
+  const isNext = next && (next.floor === state.floor && state.direction === next.direction)
+
+  const closeDoors = () => {
+    state.timeout = setTimeout(() => {
+      state.open = false;
+      state.timeout = null;
+      updateUI();
+    }, 3000);
+  }
+
+  if (state.open && isNext) {
+    clearTimeout(state.timeout);
+    removeNext(next);
+    closeDoors();
+  }
 
   if (goNext) {
     const [ next ] = getNext();
     const diference = Math.abs(state.floor - next.floor);
 
     elevator.style.transform = `translateY(-${(next.floor * 120) + 120}px)`;
-    elevator.style.transitionDuration = `${diference}s`;
+    elevator.style.transition = `transform ${diference}s ease`;
 
     state.open = false;
     state.moving = true;
@@ -63,18 +81,10 @@ const updateUI = () => {
       state.open = true;
       state.moving = false;
       removeNext(next);
-      state.timeout = setTimeout(() => {
-        state.open = false
-        state.timeout = null;
-        updateUI();
-      }, 3000);
+      closeDoors();
       updateUI();
     }, diference * 1000);
-    console.log(diference);
   }
-
-
-  console.log(state);
 };
 
 window.addEventListener('load', setup);
